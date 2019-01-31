@@ -13,17 +13,11 @@ namespace csharpcore
         [Fact]
         public void UpdateQualityTest()
         {
-            var name = "foo";
-            var sellIn = 0;
-            var quality = 0;
-
-            DoUpdateQuality(name, sellIn, quality);
-
             CombinationApprovals.VerifyAllCombinations(
                 DoUpdateQuality,
-                new string[] { name },
-                new int[] { sellIn },
-                new int[] { quality });
+                new string[] { "foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert" },
+                new int[] { 0, -1 },
+                new int[] { 0, 1, -2, 2 });
         }
 
         private static string DoUpdateQuality(string name, int sellIn, int quality)

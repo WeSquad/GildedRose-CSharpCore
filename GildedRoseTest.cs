@@ -17,7 +17,7 @@ namespace csharpcore
 
             app.UpdateQuality();
 
-            Approvals.Verify(Items[0].Name);
+            Approvals.Verify(Items[0].ToString());
         }
     }
 }

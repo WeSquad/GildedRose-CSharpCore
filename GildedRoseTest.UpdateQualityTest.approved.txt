@@ -1,1 +1,1 @@
-﻿foo
+﻿name: foo, sell in: -1, quality: 0

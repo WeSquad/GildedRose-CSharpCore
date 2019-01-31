@@ -15,8 +15,8 @@ namespace csharpcore
         {
             CombinationApprovals.VerifyAllCombinations(
                 DoUpdateQuality,
-                new string[] { "foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert" },
-                new int[] { 0, -1 },
+                new string[] { "foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Sulfuras, Hand of Ragnaros" },
+                new int[] { 0, -1, 5, 11 },
                 new int[] { 0, 1, -2, 2 });
         }
 

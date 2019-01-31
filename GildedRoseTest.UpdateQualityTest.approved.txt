@@ -1,1 +1,1 @@
-﻿name: foo, sell in: -1, quality: 0
+﻿[foo,0,0] => name: foo, sell in: -1, quality: 0

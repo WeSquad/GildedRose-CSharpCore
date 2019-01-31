@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ApprovalTests.Reporters;
 using ApprovalTests;
+using ApprovalTests.Combinations;
 using System;
 
 namespace csharpcore
@@ -12,12 +13,27 @@ namespace csharpcore
         [Fact]
         public void UpdateQualityTest()
         {
-            IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
+            var name = "foo";
+            var sellIn = 0;
+            var quality = 0;
+
+            DoUpdateQuality(name, sellIn, quality);
+
+            CombinationApprovals.VerifyAllCombinations(
+                DoUpdateQuality,
+                new string[] { name },
+                new int[] { sellIn },
+                new int[] { quality });
+        }
+
+        private static string DoUpdateQuality(string name, int sellIn, int quality)
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = name, SellIn = sellIn, Quality = quality } };
             GildedRose app = new GildedRose(Items);
 
             app.UpdateQuality();
 
-            Approvals.Verify(Items[0].ToString());
+            return app.Items[0].ToString();
         }
     }
 }

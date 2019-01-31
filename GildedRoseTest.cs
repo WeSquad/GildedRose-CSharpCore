@@ -19,13 +19,5 @@ namespace csharpcore
 
             Approvals.Verify(Items[0].Name);
         }
-
-        [Fact]
-        public void TestUseOfApprovalTests()
-        {
-            var names = new[] { "Llewellyn", "James", "Dan", "Jason", "Katrina" };
-            Array.Sort(names);
-            Approvals.VerifyAll(names, "");
-        }
     }
 }

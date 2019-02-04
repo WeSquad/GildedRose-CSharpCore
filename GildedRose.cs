@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace csharpcore
 {
@@ -20,16 +21,60 @@ namespace csharpcore
 
         private void UpdateItemQuality(Item item)
         {
-            if (item.Name == "Aged Brie")
+            switch (item.Name)
             {
-                if (item.Quality < 50)
+                case "Aged Brie":
+                    UpdateAgedBrieQuality(item);
+                    break;
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    UpdateBackstageQuality(item);
+                    break;
+                case "Sulfuras, Hand of Ragnaros":
+                    UpdateSulfurasQuality(item);
+                    break;
+                default:
+                    UpdateDefaultItemQuality(item);
+                    break;
+            }
+        }
+
+        private static void UpdateDefaultItemQuality(Item item)
+        {
+            if (item.Quality > 0)
+            {
+                item.Quality = item.Quality - 1;
+            }
+
+            item.SellIn = item.SellIn - 1;
+
+            if (item.SellIn < 0)
+            {
+                if (item.Quality > 0)
                 {
-                    item.Quality = item.Quality + 1;
+                    item.Quality = item.Quality - 1;
+                }
+            }
+        }
+
+        private static void UpdateSulfurasQuality(Item item)
+        {
+        }
+
+        private static void UpdateBackstageQuality(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality = item.Quality + 1;
+
+                if (item.SellIn < 11)
+                {
+                    if (item.Quality < 50)
+                    {
+                        item.Quality = item.Quality + 1;
+                    }
                 }
 
-                item.SellIn = item.SellIn - 1;
-
-                if (item.SellIn < 0)
+                if (item.SellIn < 6)
                 {
                     if (item.Quality < 50)
                     {
@@ -37,57 +82,31 @@ namespace csharpcore
                     }
                 }
             }
-            else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+
+            item.SellIn = item.SellIn - 1;
+
+            if (item.SellIn < 0)
+            {
+                item.Quality = item.Quality - item.Quality;
+            }
+        }
+
+        private static void UpdateAgedBrieQuality(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality = item.Quality + 1;
+            }
+
+            item.SellIn = item.SellIn - 1;
+
+            if (item.SellIn < 0)
             {
                 if (item.Quality < 50)
                 {
                     item.Quality = item.Quality + 1;
-
-                    if (item.SellIn < 11)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
-                }
-
-                item.SellIn = item.SellIn - 1;
-
-                if (item.SellIn < 0)
-                {
-                    item.Quality = item.Quality - item.Quality;
-                }
-            }
-            else if (item.Name == "Sulfuras, Hand of Ragnaros")
-            {
-            }
-            else
-            {
-                if (item.Quality > 0)
-                {
-                    item.Quality = item.Quality - 1;
-                }
-
-                item.SellIn = item.SellIn - 1;
-
-                if (item.SellIn < 0)
-                {
-                    if (item.Quality > 0)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
                 }
             }
         }
-
     }
 }

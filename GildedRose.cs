@@ -87,7 +87,7 @@ namespace csharpcore
 
             if (item.SellIn < 0)
             {
-                item.Quality = item.Quality - item.Quality;
+                item.Quality = 0;
             }
         }
 

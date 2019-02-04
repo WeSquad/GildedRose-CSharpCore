@@ -36,7 +36,7 @@ namespace csharpcore
                             {
                                 if (Items[i].Quality < 50)
                                 {
-                                    Items[i].Quality = Items[i].Quality + 2;
+                                    Items[i].Quality = Items[i].Quality + 1;
                                 }
                             }
 

@@ -1,7 +1,7 @@
 ﻿using Xunit;
 using System.Collections.Generic;
 using ApprovalTests.Reporters;
-using ApprovalTests;
+using ApprovalTests.Combinations;
 using System;
 
 namespace csharpcore
@@ -21,9 +21,16 @@ namespace csharpcore
         [Fact]
         public void TestUseOfApprovalTests()
         {
-            var names = new[] { "Llewellyn", "James", "Dan", "Jason", "Katrina" };
-            Array.Sort(names);
-            Approvals.VerifyAll(names, "");
+           CombinationApprovals.VerifyAllCombinations(
+                DoUpdateQuality,
+                new string[] { "foo" },
+                new int[] { 0 },
+                new int[] { 0 });
+        }
+
+        public string DoUpdateQuality(string name, int sellIn, int quality)
+        {
+            return "";
         }
     }
 }

@@ -35,7 +35,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            return $"name:{ item.Name }, sellIn:{ item.SellIn}, quality:{ item.Quality }";
+            return item.ToString();
         }
     }
 }

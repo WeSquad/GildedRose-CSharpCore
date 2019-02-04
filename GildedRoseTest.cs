@@ -9,21 +9,13 @@ namespace csharpcore
     [UseReporter(typeof(DiffReporter))]
     public class GildedRoseTest
     {
-        [Fact]
-        public void UpdateQualityNameUnchangedTest()
-        {
-            IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
-            GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
-            Assert.Equal("foo", Items[0].Name);
-        }
 
         [Fact]
         public void TestUseOfApprovalTests()
         {
            CombinationApprovals.VerifyAllCombinations(
                 DoUpdateQuality,
-                new string[] { "foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert" },
+                new string[] { "foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Sulfuras, Hand of Ragnaros" },
                 new int[] { 0, -1, 6, 11, 8, 4 },
                 new int[] { 0, 1, 2, 45, 51 });
         }

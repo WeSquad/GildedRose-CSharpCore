@@ -22,7 +22,7 @@ namespace csharpcore
 
         public string DoUpdateQuality(string name, int sellIn, int quality)
         {
-            Item item = new Item { Name = name, SellIn = sellIn, Quality = quality };
+            Item item = ItemFactory.Create(name, sellIn, quality);
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();

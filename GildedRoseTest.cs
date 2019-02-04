@@ -23,9 +23,9 @@ namespace csharpcore
         {
            CombinationApprovals.VerifyAllCombinations(
                 DoUpdateQuality,
-                new string[] { "foo" },
-                new int[] { 0 },
-                new int[] { 0 });
+                new string[] { "foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert" },
+                new int[] { 0, -1, 6, 11, 8 },
+                new int[] { 0, 1, 2 });
         }
 
         public string DoUpdateQuality(string name, int sellIn, int quality)

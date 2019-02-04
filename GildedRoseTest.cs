@@ -30,7 +30,12 @@ namespace csharpcore
 
         public string DoUpdateQuality(string name, int sellIn, int quality)
         {
-            return "";
+            Item item = new Item { Name = name, SellIn = sellIn, Quality = quality };
+            IList<Item> Items = new List<Item> { item };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            return $"name:{ item.Name }, sellIn:{ item.SellIn}, quality:{ item.Quality }";
         }
     }
 }
